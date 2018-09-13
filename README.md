@@ -29,11 +29,13 @@ Report generation can be automated with gradle.
 Example:
 ```groovy
 task generateAllureReport(type: Exec) {
-    commandLine "allure generate build/allure-results -v ${allureVersion} -o build/reports/allure"
+    commandLine "allure"
+    args "generate", "build/allure-results",  "-v", "${allureVersion}", "-o", "build/reports/allure",  "--clean"
 }
 test.finalizedBy(generateAllureReport)
 
 task openAllureReport(type: Exec) {
-    commandLine "allure report open -o build/reports/allure"
+    commandLine "allure"
+    args "report", "open", "-o", "build/reports/allure"
 }
 ```
